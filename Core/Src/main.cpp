@@ -559,7 +559,11 @@ static void MX_GPIO_Init(void)
   HAL_GPIO_WritePin(GPIOC, INTERNAL_LED_RED_Pin|INTERNAL_LED_GREEN_Pin|INTERNAL_LED_BLUE_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOB, SPI_SS_Pin|EXT_RGB_LED_BLUE_Pin|EXT_RGB_LED_GREEN_Pin|EXT_RGB_LED_RED_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOA, nRESET_Pin|EXTINT_Pin|CAN1_TERMINATOR_Pin, GPIO_PIN_RESET);
+
+  /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(GPIOB, SPI_SS_Pin|CAN2_TERMINATOR_Pin|EXT_RGB_LED_BLUE_Pin|EXT_RGB_LED_GREEN_Pin
+                          |EXT_RGB_LED_RED_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pins : INTERNAL_LED_RED_Pin INTERNAL_LED_GREEN_Pin INTERNAL_LED_BLUE_Pin */
   GPIO_InitStruct.Pin = INTERNAL_LED_RED_Pin|INTERNAL_LED_GREEN_Pin|INTERNAL_LED_BLUE_Pin;
@@ -568,12 +572,33 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : SPI_SS_Pin EXT_RGB_LED_BLUE_Pin EXT_RGB_LED_GREEN_Pin EXT_RGB_LED_RED_Pin */
-  GPIO_InitStruct.Pin = SPI_SS_Pin|EXT_RGB_LED_BLUE_Pin|EXT_RGB_LED_GREEN_Pin|EXT_RGB_LED_RED_Pin;
+  /*Configure GPIO pins : nRESET_Pin EXTINT_Pin CAN1_TERMINATOR_Pin */
+  GPIO_InitStruct.Pin = nRESET_Pin|EXTINT_Pin|CAN1_TERMINATOR_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
+  /*Configure GPIO pins : ANT_DETECT_Pin TX_READY_Pin GEO_Pin */
+  GPIO_InitStruct.Pin = ANT_DETECT_Pin|TX_READY_Pin|GEO_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
+  /*Configure GPIO pins : SPI_SS_Pin CAN2_TERMINATOR_Pin EXT_RGB_LED_BLUE_Pin EXT_RGB_LED_GREEN_Pin
+                           EXT_RGB_LED_RED_Pin */
+  GPIO_InitStruct.Pin = SPI_SS_Pin|CAN2_TERMINATOR_Pin|EXT_RGB_LED_BLUE_Pin|EXT_RGB_LED_GREEN_Pin
+                          |EXT_RGB_LED_RED_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+
+  /*Configure GPIO pins : RTK_Pin TIMEPULSE_Pin */
+  GPIO_InitStruct.Pin = RTK_Pin|TIMEPULSE_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
 }
 
