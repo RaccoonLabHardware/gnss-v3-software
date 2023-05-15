@@ -22,7 +22,6 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "application.hpp"
-#include "kocherga.hpp"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
