@@ -1,0 +1,34 @@
+name: cubeide_build
+
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 10
+    strategy:
+      matrix:
+        project_name: ['gps_mag_baro_v3']
+    container:
+      image: wsbu/stm32cubeide
+    steps:
+      - name: Force Install GIT latest. Necessary for ubuntu-18.04 and older.
+        run: |
+          apt-get update \
+          && apt-get install -y software-properties-common \
+          && apt-get update \
+          && add-apt-repository -y ppa:git-core/ppa \
+          && apt-get update \
+          && apt-get install -y git
+
+      - uses: actions/checkout@v2
+        with:
+          path: 'repo'
+          submodules: recursive
+
+      - name: Checkout tools repo
+        uses: actions/checkout@v3
+        with:
+          repository: PonomarevDA/tools
+          path: tools
+
+      - run: cd repo && ../tools/stm32/build_cubeide.sh -v -c /opt/stm32cubeide/stm32cubeide -d . -p ${{ matrix.project_name }}
