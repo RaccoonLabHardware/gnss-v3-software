@@ -22,7 +22,6 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "application.hpp"
-#include "kocherga.hpp"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -116,6 +115,7 @@ int main(void)
   MX_USART5_UART_Init();
   MX_SPI2_Init();
   /* USER CODE BEGIN 2 */
+  __enable_irq();
   application_entry_point();
   /* USER CODE END 2 */
 
