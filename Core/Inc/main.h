@@ -75,6 +75,7 @@ void Error_Handler(void);
 #define EXT_RGB_LED_GREEN_GPIO_Port GPIOB
 #define EXT_RGB_LED_RED_Pin GPIO_PIN_9
 #define EXT_RGB_LED_RED_GPIO_Port GPIOB
+
 /* USER CODE BEGIN Private defines */
 
 /* USER CODE END Private defines */
