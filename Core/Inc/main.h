@@ -67,6 +67,10 @@ void Error_Handler(void);
 #define ADC_VIN_GPIO_Port GPIOA
 #define ADC_5V_Pin GPIO_PIN_1
 #define ADC_5V_GPIO_Port GPIOA
+#define ADC_CURRENT_Pin GPIO_PIN_6
+#define ADC_CURRENT_GPIO_Port GPIOA
+#define ADC_VERSION_Pin GPIO_PIN_7
+#define ADC_VERSION_GPIO_Port GPIOA
 #define SPI_SS_Pin GPIO_PIN_12
 #define SPI_SS_GPIO_Port GPIOB
 #define EXT_RGB_LED_BLUE_Pin GPIO_PIN_5
