@@ -73,6 +73,8 @@ void Error_Handler(void);
 #define ADC_VERSION_GPIO_Port GPIOA
 #define SPI_SS_Pin GPIO_PIN_12
 #define SPI_SS_GPIO_Port GPIOB
+#define PWM_BUZZER_Pin GPIO_PIN_3
+#define PWM_BUZZER_GPIO_Port GPIOB
 #define EXT_RGB_LED_BLUE_Pin GPIO_PIN_5
 #define EXT_RGB_LED_BLUE_GPIO_Port GPIOB
 #define EXT_RGB_LED_GREEN_Pin GPIO_PIN_8
